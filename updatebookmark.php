@@ -1,6 +1,10 @@
 <?php
 require_once 'core/init.php'; 
+$user = new User();
 
+if(!$user->isLoggedIn()){
+    Redirect::to('index.php');
+}
 $bookmark = new Bookmark(Input::get('bid'));
 
 include_once 'includes/layout/header.php';
