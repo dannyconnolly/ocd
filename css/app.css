@@ -1,0 +1,113 @@
+/*
+font-family: 'Montserrat Alternates', sans-serif;
+font-family: 'Bevan', cursive;
+*/
+body{
+    background: #eff0f2;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+fieldset legend{
+    background: transparent;
+}
+.top-bar .name h1 a {
+    text-transform: uppercase;
+    font-family: 'Bevan', cursive;
+    font-size: 30px;
+}
+.button.add{
+    width: 100%;
+}
+.page-title {
+    font-family: 'Bevan', cursive;
+    text-transform: uppercase;
+    color: #353535;
+    text-shadow: 1px 1px #fff;
+}
+.sidebar{
+    background: #43ac6a;
+    background: #cdeb8e; /* Old browsers */
+background: -moz-linear-gradient(left, #cdeb8e 0%, #a5c956 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#cdeb8e), color-stop(100%,#a5c956)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, #cdeb8e 0%,#a5c956 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, #cdeb8e 0%,#a5c956 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, #cdeb8e 0%,#a5c956 100%); /* IE10+ */
+background: linear-gradient(to right, #cdeb8e 0%,#a5c956 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeb8e', endColorstr='#a5c956',GradientType=1 ); /* IE6-9 */
+}
+.listings, .actions, .sidebar-nav{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.listings {
+    width: 100%;
+    background: #fff;
+}
+.list-item{
+    margin:  0;
+    line-height: 40px;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+}
+.list-item.row {
+    margin:  0;
+}
+.list-item a{
+    display: block;
+    color: #353535;
+}
+.actions{
+    overflow: hidden;
+}
+.action{
+    width: 50%;
+    float: left;
+}
+.action a {
+    font-size: 18px;
+    line-height: 40px;
+}   
+.action a span{
+    display: none;
+}
+.fi-pencil.update {
+    color: #353535
+}
+.fi-trash.delete{
+    color: #353535;
+}
+.sidebar, .content{
+    height: 800px;
+}
+.sidebar-nav li {
+    text-align: center;
+    margin: 35px 0 0;
+}
+.sidebar-nav li a{
+    color: #000;
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14px;
+}
+.sidebar-nav li a:hover{
+    
+}
+.sidebar-nav li span {
+    font-size: 50px;
+    line-height: 40px;
+    display: block;
+}
+.sidebar-nav li a {
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.accordion dd > a{
+    background: #fff;
+    color: #353535;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+}
