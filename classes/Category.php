@@ -46,6 +46,7 @@ class Category {
         if(!$this->_db->insert('categories', $fields)){
               throw new Exception('There was a problem creating category!');
         }
+        return $this->_db->lastInsertId();
     }
     
     public function update($fields = array(), $id = null){
@@ -56,6 +57,12 @@ class Category {
     
     public function data(){
         return $this->_data;
+    }
+    
+    public function delete($id = null){
+        if(!$this->_db->delete('categories', array('id', '=', $id))){
+            throw new Exception('There was a problem deleting');
+        }
     }
     
     public function setRelationship($fields){

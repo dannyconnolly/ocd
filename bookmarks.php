@@ -48,7 +48,7 @@ $bookmarks = $bookmark->getAll();
                   <div class="large-3 columns">
                       <ul class="actions">
                           <li class="action"><a href="updatebookmark.php?bid=<?php echo escape($bookmark->id); ?>" title="update" class="fi-pencil update"><span>Update</span></a></li>
-                          <li class="action"><a href="deletebookmark.php?bid=<?php echo escape($bookmark->id); ?>" title="update" class="fi-trash delete"><span>Delete</span></a></li>
+                          <li class="action"><a href="deletebookmark.php?bid=<?php echo escape($bookmark->id); ?>" title="delete" class="fi-trash delete"><span>Delete</span></a></li>
                       </ul>
                   </div>
             </li>  

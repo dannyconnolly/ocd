@@ -44,6 +44,12 @@ class Bookmark {
         }
     }
     
+    public function delete($id = null){
+        if(!$this->_db->delete('bookmarks', array('id', '=', $id))){
+            throw new Exception('There was a problem deleting');
+        }
+    }
+    
     public function data(){
         return $this->_data;
     }

@@ -44,6 +44,12 @@ class Feed {
         return $this->_data;
     }
     
+    public function delete($id = null){
+        if(!$this->_db->delete('feeds', array('id', '=', $id))){
+            throw new Exception('There was a problem deleting');
+        }
+    }
+    
     public function checkCache($url,$name,$age = 86400) { 
         // directory in which to store cached files
         $cacheDir = "cache/";

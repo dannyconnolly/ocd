@@ -6,6 +6,8 @@ if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
 $bookmark = new Bookmark(Input::get('bid'));
+$category = new Category();
+$categories = $category->getAll();
 
 include_once 'includes/layout/header.php';
 
@@ -57,6 +59,18 @@ if(Input::exists()){
     <div class="field">
         <label for="url">Bookmark:</label>
         <input type="url" name="url" id="url" value="<?php echo escape($bookmark->data()->url); ?>" />
+    </div>
+    <div class="field">
+        <fieldset>
+            <legend>Category</legend>
+            <ul class="category-list">
+                <?php foreach ($categories as $item) { 
+                    $cat_slug = str_replace(' ', '_', strtolower(escape($item->name)));
+                    ?>
+                <li><input type="checkbox" name="category[<?php echo $cat_slug; ?>]" id="<?php echo $cat_slug; ?>" value="<?php echo escape($item->id); ?>"/> <label for="<?php echo $cat_slug; ?>"><?php echo escape($item->name); ?></label></li>
+                <?php } ?>
+            </ul>
+         </fieldset>
     </div>
     <input type="hidden" name="token" value="<?php echo Token::generate(); ?>"/>
     <input type="hidden" name="updated" value="<?php echo date('Y-m-d H:i:s') ?>"/>

@@ -7,13 +7,13 @@ if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
 
-if(Input::get('bid')){
-    $bookmark = new Bookmark();
+if(Input::get('fid')){
+    $feed = new Feed();
     try{
-         $bookmark->delete(Input::get('bid'));
+         $feed->delete(Input::get('fid'));
 
-         Session::flash('bookmark', 'Bookmark successfully deleted');
-         Redirect::to('bookmarks.php');
+         Session::flash('feed', 'Feed successfully deleted');
+         Redirect::to('feeds.php');
      }
      catch(Exception $e){
          die($e->getMessage());

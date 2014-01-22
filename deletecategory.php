@@ -7,13 +7,13 @@ if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
 
-if(Input::get('bid')){
-    $bookmark = new Bookmark();
+if(Input::get('cid')){
+    $category = new Category();
     try{
-         $bookmark->delete(Input::get('bid'));
+         $category->delete(Input::get('cid'));
 
-         Session::flash('bookmark', 'Bookmark successfully deleted');
-         Redirect::to('bookmarks.php');
+         Session::flash('category', 'Category successfully deleted');
+         Redirect::to('categories.php');
      }
      catch(Exception $e){
          die($e->getMessage());
