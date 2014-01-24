@@ -54,5 +54,11 @@ class Bookmark {
         return $this->_data;
     }
     
+    public function getAllByCategory($cid = null){
+        $sql = "SELECT cat_relations.bookmark_id, bookmarks.title FROM cat_relations JOIN bookmarks ON cat_relations.bookmark_id = bookmarks.id WHERE cat_relations.cat_id = ?";
+        if(!$this->query($sql, array($value))->error()){ 
+            return $this;
+        }
+    }
 }
 

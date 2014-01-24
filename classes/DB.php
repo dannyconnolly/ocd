@@ -26,7 +26,7 @@ class DB {
     public function query($sql, $params = array()){
         $this->_error = false;
         
-        if($this->_query = $this->_pdo->prepare($sql)){
+        if($sth = $this->_query = $this->_pdo->prepare($sql)){
            
             $x = 1;
             
@@ -41,9 +41,10 @@ class DB {
                 $this->_results = $this->_query->fetchAll(PDO::FETCH_OBJ);
                 $this->_count = $this->_query->rowCount();
             }else{
+                
                 $this->_error = true;
             } 
-        }        
+        }
         return $this;
     }
     
@@ -84,7 +85,7 @@ class DB {
         $x = 1;
 
         foreach($fields as $field){
-            $values .= '?';
+            $values .= '\''.$field.'\'';
             if($x < count($fields)){
                 $values .= ', ';
             }
@@ -92,7 +93,7 @@ class DB {
         }
 
         $sql = "INSERT INTO {$table} (`".implode('`, `', $keys)."`) VALUES ({$values})";
-        
+        echo $sql;
         if(!$this->query($sql, $fields)->error()){
             return true;
         }

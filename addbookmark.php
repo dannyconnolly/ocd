@@ -19,10 +19,8 @@ if (Input::exists()) {
                 'max' => 64),
             'url' => array(
                 'required' => true,
-                'min' => 6),
-            'category_name' => array(
-                'min' => 2,
-                'max' => 45
+                'min' => 6,
+                'unique' => 'bookmarks'
             )
         ));
 
@@ -51,7 +49,7 @@ if (Input::exists()) {
                     foreach (Input::get('category') as $value) {
                         $category->setRelationship(array(
                             'cat_id' => $value,
-                            'bookmark_id' => $last_id
+                            'bookmark_id' => $last_bookmark_id
                         ));
                     }
                 }

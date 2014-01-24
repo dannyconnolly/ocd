@@ -13,7 +13,8 @@ if(Input::exists()){
         $validation = $validate->check($_POST, array(
             'name' => array(
                 'min' => 2,
-                'max' => 45)
+                'max' => 45,
+                'unique' => 'categories')
         ));
 
       if($validate->passed()){

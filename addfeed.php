@@ -18,7 +18,8 @@ if (Input::exists()) {
                 'max' => 64),
             'url' => array(
                 'required' => true,
-                'min' => 6),
+                'min' => 6,
+                'unique' => 'bookmarks'),
             'category_name' => array(
                 'min' => 2,
                 'max' => 45
