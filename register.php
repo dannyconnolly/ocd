@@ -44,8 +44,8 @@ if(Input::exists()){
                   'group' => 1
               ));
               
-              Session::flash('home', 'User successfully registered');
-              Redirect::to('index.php');
+              Session::flash('login', 'User successfully registered');
+              Redirect::to('login.php');
           }
           catch(Exception $e){
               die($e->getMessage());

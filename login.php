@@ -31,6 +31,12 @@ if(Input::exists()){
     }
 }
 ?>
+<?php if(Session::exists('login')){ ?>
+<div data-alert class="alert-box info radius">
+    <?php echo Session::flash('login'); ?>
+     <a href="#" class="close">&times;</a>
+</div>
+<?php } ?>
 <form method="POST" action="" class="large-8 column large-centered">
     <fieldset>
     <legend>Login</legend>
