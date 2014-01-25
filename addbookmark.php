@@ -31,7 +31,8 @@ if (Input::exists()) {
                 $last_bookmark_id = $bookmark->create(array(
                     'title' => Input::get('title'),
                     'url' => Input::get('url'),
-                    'created' => Input::get('created')
+                    'created' => Input::get('created'),
+                    'user_id' => Session::getValue(Config::get('session/session_name'))
                 ));
 
                 if (Input::get('category_name')) {
@@ -39,12 +40,11 @@ if (Input::exists()) {
                         'name' => Input::get('category_name'),
                         'created' => Input::get('created')
                     ));
-                    
+
                     $category->setRelationship(array(
                         'cat_id' => $last_category_id,
                         'bookmark_id' => $last_bookmark_id
                     ));
-                    
                 } elseif (Input::get('category')) {
                     foreach (Input::get('category') as $value) {
                         $category->setRelationship(array(
@@ -92,7 +92,7 @@ if (Input::exists()) {
                     <?php
                 } else {
                     ?>
-                <a href="addcategory.php" title="Add category">Add category</a>
+                    <a href="addcategory.php" title="Add category">Add category</a>
                     <ul class="category-list">
                         <?php
                         foreach ($categories as $item) {
