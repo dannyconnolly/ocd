@@ -4,37 +4,49 @@ require_once 'core/init.php';
 include_once 'includes/layout/header.php';
 $user = new User();
 
-if(!$user->isLoggedIn()){
+if (!$user->isLoggedIn()) {
     Redirect::to('index.php');
 }
 
-if(Input::exists()){
-    if(Token::check(Input::get('token'))){
-       
+if (Input::exists()) {
+    if (Token::check(Input::get('token'))) {
+
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
             'name' => array(
                 'required' => true,
                 'min' => 2,
                 'max' => 50
+            ),
+            'username' => array(
+                'required' => true,
+                'min' => 2,
+                'max' => 20
+            ),
+            'email' => array(
+                'required' => true,
+                'min' => 2,
+                'max' => 255,
+                'valid_email' => true
             )
         ));
-        
-        if($validate->passed()){
+
+        if ($validate->passed()) {
             try {
                 $user->update(array(
-                    'name' => Input::get('name')
+                    'username' => Input::get('username'),
+                    'name' => Input::get('name'),
+                    'email' => Input::get('email')
                 ));
-                
-                Session::flash('home', 'Your details have been updated');
-                Redirect::to('index.php');
-            }
-            catch (Exception $e) {
+
+                Session::flash('profile', 'Your details have been updated');
+                Redirect::to('profile.php');
+            } catch (Exception $e) {
                 die($e->getMessage());
             }
         } else {
-            foreach ($validation->errorrs as $error){
-                echo $error.'<br />';
+            foreach ($validation->errors as $error) {
+                echo $error . '<br />';
             }
         }
     }
@@ -42,13 +54,21 @@ if(Input::exists()){
 ?>
 <form method="POST" action="" class="large-8 column large-centered">
     <fieldset>
-    <legend>Update profile</legend>
-    <div class="field">
-        <label for="name">Name:</label>
-        <input type="text" name="name" value="<?php echo escape($user->data()->name); ?>" id="name" />
-    </div>
-    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>"/>
-    <input type="submit" value="Update!" class="button" />
+        <legend>Update profile</legend>
+        <div class="field">
+            <label for="username">Username:</label>
+            <input type="text" name="username" value="<?php echo escape($user->data()->username); ?>" id="username" />
+        </div>
+        <div class="field">
+            <label for="email">Email:</label>
+            <input type="text" name="email" value="<?php echo escape($user->data()->email); ?>" id="email" />
+        </div>
+        <div class="field">
+            <label for="name">Name:</label>
+            <input type="text" name="name" value="<?php echo escape($user->data()->name); ?>" id="name" />
+        </div>
+        <input type="hidden" name="token" value="<?php echo Token::generate(); ?>"/>
+        <input type="submit" value="Update!" class="button" />
     </fieldset>
 </form>
 

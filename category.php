@@ -19,7 +19,7 @@ if (Input::get('cid')) {
     </header>
 
     <div class="large-4 columns">
-        <a href="editcategory.php" class="button add">Edit category</a>
+        <a href="updatecategory.php" class="button add">Edit category</a>
     </div>
     <div class="large-12 columns">
         <?php if (Session::exists('category')) { ?>

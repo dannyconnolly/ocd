@@ -1,16 +1,16 @@
 <?php
-require_once 'core/init.php'; 
+require_once 'core/init.php';
 $user = new User();
 
-if(!$user->isLoggedIn()){
+if (!$user->isLoggedIn()) {
     Redirect::to('index.php');
 }
 $feed = new Feed(Input::get('fid'));
 
 include_once 'includes/layout/header.php';
 
-if(Input::exists()){
-    if(Token::check(Input::get('token'))){
+if (Input::exists()) {
+    if (Token::check(Input::get('token'))) {
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
             'title' => array(
@@ -18,49 +18,47 @@ if(Input::exists()){
             'url' => array(
                 'required' => true,
                 'min' => 6 //,
-               // 'unique' => true,
-                // 'valid_url' => true
+            // 'unique' => true,
+            // 'valid_url' => true
             )
         ));
 
-      if($validate->passed()){
+        if ($validate->passed()) {
             // register user
-         try{
-              $feed->update(array(
-                  'title' => Input::get('title'),
-                  'url' => Input::get('url'),
-                  'updated' => Input::get('updated')
-              ), Input::get('fid'));
-              
-              Session::flash('feed', 'Feed successfully updated');
-              Redirect::to('feeds.php');
-          }
-          catch(Exception $e){
-              die($e->getMessage());
-          }
-      } else {
+            try {
+                $feed->update(array(
+                    'title' => Input::get('title'),
+                    'url' => Input::get('url'),
+                    'updated' => date('Y-m-d H:i:s')
+                        ), Input::get('fid'));
+
+                Session::flash('feed', 'Feed successfully updated');
+                Redirect::to('feeds.php');
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        } else {
             // output errors
-         foreach($validate->errors() as $error){
-             echo $error.'<br />';
-         }
-       }
+            foreach ($validate->errors() as $error) {
+                echo $error . '<br />';
+            }
+        }
     }
 }
 ?>
 <form method="POST" action="" class="large-8 column large-centered">
     <fieldset>
-    <legend>Update feed</legend>
-    <div class="field">
-        <label for="title">Title:</label>
-        <input type="text" name="title" id="title" value="<?php echo escape($feed->data()->title); ?>" />
-    </div>
-    <div class="field">
-        <label for="url">Feed:</label>
-        <input type="url" name="url" id="url" value="<?php echo escape($feed->data()->url); ?>" />
-    </div>
-    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>"/>
-    <input type="hidden" name="updated" value="<?php echo date('Y-m-d H:i:s') ?>"/>
-    <input type="submit" value="Update!" class="button" />
+        <legend>Update feed</legend>
+        <div class="field">
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" value="<?php echo escape($feed->data()->title); ?>" />
+        </div>
+        <div class="field">
+            <label for="url">Feed:</label>
+            <input type="url" name="url" id="url" value="<?php echo escape($feed->data()->url); ?>" />
+        </div>
+        <input type="hidden" name="token" value="<?php echo Token::generate(); ?>"/>
+        <input type="submit" value="Update!" class="button" />
     </fieldset>
 </form>
 <?php include_once 'includes/layout/footer.php'; ?>

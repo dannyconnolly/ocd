@@ -2,9 +2,14 @@
 font-family: 'Montserrat Alternates', sans-serif;
 font-family: 'Bevan', cursive;
 */
+html, body{
+    height: 100%;
+    overflow: hidden;
+}
 body{
     background: #eff0f2;
     font-family: 'Montserrat Alternates', sans-serif;
+    font-family: Arial, sans-serif;
 }
 fieldset legend{
     background: transparent;
@@ -12,18 +17,17 @@ fieldset legend{
 .top-bar .name h1 a {
     text-transform: uppercase;
     font-family: 'Bevan', cursive;
+    font-family: Impact, sans-serif;
 }
 .button.add{
     width: 100%;
 }
 .page-title {
     font-family: 'Bevan', cursive;
-    text-transform: uppercase;
+    font-family: Impact, sans-serif;
     color: #353535;
     text-shadow: 1px 1px #fff;
-}
-.sidebar{
-    background: #00A99E;
+    line-height: 30px;
 }
 .listings, .actions, .sidebar-nav{
     list-style: none;
@@ -67,12 +71,16 @@ fieldset legend{
 .fi-trash.delete{
     color: #353535;
 }
-.sidebar, .content{
-    height: 800px;
+.sidebar{
+    background: #00A99E;
+    height: 80px;
+    padding: 10px 0;
+}
+.sidebar-nav.row{
+    margin: 0 auto;
 }
 .sidebar-nav li {
     text-align: center;
-    margin: 35px 0 0;
 }
 .sidebar-nav li a{
     color: #000;
@@ -82,16 +90,15 @@ fieldset legend{
     line-height: 14px;
 }
 .sidebar-nav li a:hover{
-    
+
 }
 .sidebar-nav li span {
-    font-size: 50px;
+    font-size: 40px;
     line-height: 40px;
     display: block;
 }
 .sidebar-nav li a {
     color: #000;
-    text-transform: uppercase;
     font-weight: 700;
     font-size: 13px;
 }
@@ -112,5 +119,46 @@ fieldset legend{
 .category-list li{
     width: 33%;
     float:left;
-    
+}
+
+.dw-box{
+    background: #fff;
+    margin: 0 0 15px 0;
+}
+.dw-header{
+    background: #353535;
+}
+.dw-header h3 {
+    color: #fff;
+    font-family: 'Bevan', cursive;
+    font-family: Impact, sans-serif;
+    margin: 0;
+    line-height: 50px;
+    font-size: 20px;
+    padding: 0 15px;
+}
+.dw-header h3 span{
+    display: inline-block;
+    margin-right: 10px;
+}
+.dw-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.dw-list-item{
+    border-bottom: 1px solid #eee;
+}
+.dw-list-item a, .dw-list-item a:visited {
+    color: #353535;
+    font-size: 18px;
+    padding: 15px 35px 10px 15px;
+    line-height: 22px;
+    display: block;
+}
+.dw-list-item:hover {
+    background: #E3E3E3;
+}
+.dw-list-item:hover a{
+    color: #000;
 }
