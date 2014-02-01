@@ -17,9 +17,7 @@ if (Input::exists()) {
                 'min' => 2,),
             'url' => array(
                 'required' => true,
-                'min' => 6 //,
-            // 'unique' => true,
-            // 'valid_url' => true
+                'min' => 6
             )
         ));
 
@@ -38,7 +36,6 @@ if (Input::exists()) {
                 die($e->getMessage());
             }
         } else {
-            // output errors
             foreach ($validate->errors() as $error) {
                 echo $error . '<br />';
             }

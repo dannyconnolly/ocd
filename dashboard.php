@@ -27,7 +27,7 @@ include_once 'includes/layout/header.php';
         <div class="dw-profile row">
             <div class="large-4 columns">
                 <span class="th">
-                    <img src="http://foundation.zurb.com/docs/assets/img/examples/space.jpg" width="90px" height="90px">
+                    <img src="<?php echo $user->get_gravatar(escape($user->data()->email)); ?>" alt="<?php echo escape($user->data()->name); ?>" />
                 </span>
             </div>
             <div class="large-8 columns">

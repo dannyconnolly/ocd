@@ -14,8 +14,10 @@ if (!$username = Input::get('user')) {
 }
 ?>
 <div class="large-8 columns">
-    <h3><?php echo escape($data->username); ?></h3>
-    <p>Full name: <?php echo escape($data->name); ?></p>  
+    <h3>Username: <?php echo escape($data->username); ?></h3>
+    <p>Full name: <?php echo escape($data->name); ?></p> 
+    <p>Email: <?php echo escape($data->email); ?></p>
+    <img src="<?php echo $user->get_gravatar(escape($data->email)); ?>" alt="<?php echo escape($data->name); ?>" />
 </div>
 <div class="large-4 columns"></div>
 

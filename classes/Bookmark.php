@@ -67,7 +67,7 @@ class Bookmark {
     }
 
     public function getRecentBookmarks($user_id = null) {
-        $sql = "SELECT * FROM bookmarks WHERE created <= NOW() AND user_id = ? LIMIT 10";
+        $sql = "SELECT * FROM bookmarks WHERE created <= NOW() AND user_id = ? ORDER BY created DESC LIMIT 5";
         if (!$this->_db->query($sql, array($user_id))->error()) {
             return $this->_db->results();
         }

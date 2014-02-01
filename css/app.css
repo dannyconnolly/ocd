@@ -4,7 +4,6 @@ font-family: 'Bevan', cursive;
 */
 html, body{
     height: 100%;
-    overflow: hidden;
 }
 body{
     background: #eff0f2;
