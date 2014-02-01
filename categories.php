@@ -47,7 +47,7 @@ $categories = $category->getAll();
                     <div class="large-3 columns">
                         <ul class="actions">
                             <li class="action"><a href="updatecategory.php?cid=<?php echo escape($category->id); ?>" title="update" class="fi-pencil update"><span>Update</span></a></li>
-                            <li class="action"><a href="deletecategory.php?cid=<?php echo escape($category->id); ?>" title="update" class="fi-trash delete"><span>Delete</span></a></li>
+                            <li class="action"><a href="deletecategory.php?cid=<?php echo escape($category->id); ?>" title="update" class="fi-trash delete" id="category-delete"><span>Delete</span></a></li>
                         </ul>
                     </div>
                 </li>  
