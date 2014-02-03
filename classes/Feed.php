@@ -8,6 +8,11 @@ class Feed {
 
     public function __construct($feed = null) {
         $this->_db = DB::getInstance();
+
+        if ($feed) {
+            $this->find($feed);
+            $this->_id = $feed;
+        }
     }
 
     public function find($feed = null) {
@@ -50,35 +55,15 @@ class Feed {
         }
     }
 
-    public function checkCache($url, $name, $age = 86400) {
-        // directory in which to store cached files
-        $cacheDir = "cache/";
-        // cache filename constructed from MD5 hash of URL
-        $filename = $cacheDir . $name;
-        // default to fetch the file
-        $cache = true;
-        // but if the file exists, don't fetch if it is recent enough
-        if (file_exists($filename)) {
-            $cache = (filemtime($filename) < (time() - $age));
-        }
-        // fetch the file if required
-        if ($cache) {
-            $xmlD = simplexml_load_file($url);
-            $itemD = $xmlD->channel->item;
-            file_put_contents($filename, serialize($itemD));
-            // update timestamp to now
-            touch($filename);
-        }
-        // return the cache filename
-        return unserialize(file_get_contents($filename));
-    }
-
     public function parseFeed($url) {
         $rss = simplexml_load_file($url);
-
-        foreach ($rss->channel->item as $item) {
-            return $this->_data = $item;
-        }
+        return $this->_data = $rss->channel->item;
+        /*
+          foreach ($rss->channel->item as $item) {
+          return $this->_data = $item;
+          }
+         * 
+         */
     }
 
     public function getAllByCategory($cid = null) {
@@ -88,6 +73,13 @@ class Feed {
                 . "WHERE cat_relations.cat_id = ?";
 
         if (!$this->_db->query($sql, array($cid))->error()) {
+            return $this->_db->results();
+        }
+    }
+
+    public function getCatId($feed_id = null) {
+        $sql = "SELECT cat_id FROM cat_relations WHERE feed_id = ?";
+        if (!$this->_db->query($sql, array($feed_id))->error()) {
             return $this->_db->results();
         }
     }

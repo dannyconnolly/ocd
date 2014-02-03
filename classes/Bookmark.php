@@ -73,4 +73,11 @@ class Bookmark {
         }
     }
 
+    public function getCatId($bookmark_id = null) {
+        $sql = "SELECT cat_id FROM cat_relations WHERE bookmark_id = ?";
+        if (!$this->_db->query($sql, array($bookmark_id))->error()) {
+            return $this->_db->results();
+        }
+    }
+
 }

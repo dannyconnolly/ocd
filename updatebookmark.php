@@ -64,10 +64,20 @@ if (Input::exists()) {
                 <legend>Category</legend>
                 <ul class="category-list">
                     <?php
+                    $cat_ids = $bookmark->getCatId(Input::get('bid'));
+                    $i = 0;
+
                     foreach ($categories as $item) {
                         $cat_slug = str_replace(' ', '_', strtolower(escape($item->name)));
+                        $id = $item->id;
+
+                        if ($cat_ids[$i]->cat_id == $item->id) {
+                            $selected = ' checked';
+                        } else {
+                            $selected = ' hot';
+                        }
                         ?>
-                        <li><input type="checkbox" name="category[<?php echo $cat_slug; ?>]" id="<?php echo $cat_slug; ?>" value="<?php echo escape($item->id); ?>"/> <label for="<?php echo $cat_slug; ?>"><?php echo escape($item->name); ?></label></li>
+                        <li><input type="checkbox" name="category[<?php echo $cat_slug; ?>]" id="<?php echo $cat_slug; ?>" value="<?php echo escape($item->id); ?>"<?php echo $selected; ?>/> <label for="<?php echo $cat_slug; ?>"><?php echo escape($item->name); ?></label></li>
                     <?php } ?>
                 </ul>
             </fieldset>

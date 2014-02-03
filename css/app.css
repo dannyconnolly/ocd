@@ -140,6 +140,15 @@ fieldset legend{
     display: inline-block;
     margin-right: 10px;
 }
+.dw-profile{
+    padding: 20px 0;
+}
+.dw-profile-text.columns{
+    padding-left: 0;
+}
+.dw-profile-text p{
+    margin: 0;
+}
 .dw-list{
     list-style: none;
     padding: 0;
@@ -159,5 +168,18 @@ fieldset legend{
     background: #E3E3E3;
 }
 .dw-list-item:hover a{
+    color: #000;
+}
+.feed-box{
+    border: 1px solid #eee;
+    min-height: 200px;
+    padding: 10px;
+}
+.feed-title{
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 700;
+}
+.feed-link{
     color: #000;
 }

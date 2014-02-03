@@ -45,15 +45,28 @@ $feeds = $feed->getAll();
                         }
                         ?>
                     </a>
+                    <div id="panel<?php echo $i; ?>" class="content">
+                        <ul class="small-block-grid-3">
+                            <?php
+                            $rss_items = simplexml_load_file($item->url);
 
-                    <div id="panel<?php echo $i; ?>" class="content active">
-                        <div class="large-3 columns">
-                            <ul class="actions">
-                                <li class="action"><a href="updatefeed.php?fid=<?php echo escape($item->id); ?>" title="update" class="fi-pencil update"><span>Update</span></a></li>
-                                <li class="action"><a href="deletefeed.php?fid=<?php echo escape($item->id); ?>" title="update" class="fi-trash delete"><span>Delete</span></a></li>
-                            </ul>
+                            foreach ($rss_items->channel->item as $rss_item) {
+                                ?>
+                                <li>
+                                    <div  class="feed-box">
+                                        <span class="th">
+                                            <img src="" alt="" />
+                                        </span>
+                                        <h4 class="feed-title"><a href="<?php echo $rss_item->link ?>" title="<?php echo $rss_item->title ?>" class="feed-link"><?php echo $rss_item->title ?></a></h4>
+                                        <p><?php echo substr(strip_tags($rss_item->description), 0, 140); ?></p>
+                                        <small><?php echo $rss_item->pubDate; ?></small>
+                                    </div>
+                                </li>
+                                <?php
+                            }
+                            ?>
 
-                        </div>
+                        </ul>
                     </div>
                 </dd>  
 
