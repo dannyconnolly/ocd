@@ -1,4 +1,7 @@
-</div><!-- .large-11 -->
+</div><!-- .large-12 -->
+<footer>
+    <p>Developed by Danny Southern</p>
+</footer>
 <script src="js/jquery.js"></script>
 <script src="js/foundation.min.js"></script>
 

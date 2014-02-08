@@ -57,7 +57,7 @@ $feeds = $feed->getAll();
                                         <span class="th">
                                             <img src="" alt="" />
                                         </span>
-                                        <h4 class="feed-title"><a href="<?php echo $rss_item->link ?>" title="<?php echo $rss_item->title ?>" class="feed-link"><?php echo $rss_item->title ?></a></h4>
+                                        <h4 class="feed-title"><a href="<?php echo $rss_item->link ?>" title="<?php echo $rss_item->title ?>" class="feed-link" target="_blank"><?php echo $rss_item->title ?></a></h4>
                                         <p><?php echo substr(strip_tags($rss_item->description), 0, 140); ?></p>
                                         <small><?php echo $rss_item->pubDate; ?></small>
                                     </div>

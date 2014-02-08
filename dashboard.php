@@ -2,6 +2,9 @@
 require_once 'core/init.php';
 $user = new User();
 
+$feed = new Feed();
+$feeds = $feed->getAll();
+
 if (!$user->isLoggedIn()) {
     Redirect::to('index.php');
 }
@@ -9,8 +12,8 @@ if (!$user->isLoggedIn()) {
 include_once 'includes/layout/header.php';
 ?>
 <div class="large-8 columns">
-    <header class="large-8 columns page-head">
-        <h1 class="page-title">Dashboard</h1>
+    <header class="dw-header">
+        <h1><span class="fi-widget"></span>Dashboard</h1>
     </header>
     <?php if (Session::exists('dashboard')) { ?>
         <div data-alert class="alert-box info radius">
@@ -18,6 +21,33 @@ include_once 'includes/layout/header.php';
             <a href="#" class="close">&times;</a>
         </div>
     <?php } ?>
+    <div class="container">
+        <ul class="feed-list">
+            <?php
+            foreach ($feeds as $item) {
+                $rss_items = simplexml_load_file($item->url);
+                $count = 0;
+
+                foreach ($rss_items->channel->item as $rss_item) {
+                    if ($count == 1) {
+                        break;
+                    }
+                    ?>
+                    <li data-date="<?php echo date('d-m-y', strtotime($rss_item->pubDate)); ?>">
+                        <div class="feed-box">
+                            <small><?php echo date('jS F Y, g:i a', strtotime($rss_item->pubDate)); ?></small>
+                            <h4 class="feed-title"><a href="<?php echo $rss_item->link ?>" title="<?php echo $rss_item->title ?>" class="feed-link" target="_blank"><?php echo $rss_item->title ?></a></h4>
+                            <h6 class="feed-site"><?php echo escape($item->title); ?></h6>
+                            <p><?php echo substr(strip_tags($rss_item->description), 0, 140); ?></p>
+                        </div>
+                    </li>
+                    <?php
+                    $count++;
+                }
+            }
+            ?>
+        </ul>
+    </div>
 </div>
 <div class = "large-4 columns">
     <div class="dw-box">

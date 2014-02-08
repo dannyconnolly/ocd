@@ -21,6 +21,9 @@ fieldset legend{
 .button.add{
     width: 100%;
 }
+.large-12.content{
+    margin: 0 0 30px
+}
 .page-title {
     font-family: 'Bevan', cursive;
     font-family: Impact, sans-serif;
@@ -127,7 +130,7 @@ fieldset legend{
 .dw-header{
     background: #353535;
 }
-.dw-header h3 {
+.dw-header h1, .dw-header h3 {
     color: #fff;
     font-family: 'Bevan', cursive;
     font-family: Impact, sans-serif;
@@ -136,7 +139,7 @@ fieldset legend{
     font-size: 20px;
     padding: 0 15px;
 }
-.dw-header h3 span{
+.dw-header h1 span, .dw-header h3 span{
     display: inline-block;
     margin-right: 10px;
 }
@@ -182,4 +185,35 @@ fieldset legend{
 }
 .feed-link{
     color: #000;
+}
+.container{
+    background: #fff;
+    padding: 20px;
+}
+.container .feed-list{
+    margin:0;
+    padding: 0;
+    list-style: none;
+}
+.container .feed-box{
+    min-height: 0
+}
+.container .feed-title{
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 700;
+}
+.container .feed-site{
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    color: #999;
+}
+footer{
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+    background: #333333;
+    clear: both;
+    margin: 30px 0 0;
 }

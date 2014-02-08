@@ -1,89 +1,110 @@
+--
+-- Table structure for table `bookmarks`
+--
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+DROP TABLE IF EXISTS `bookmarks`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bookmarks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) DEFAULT NULL,
+  `url` varchar(2083) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
-CREATE SCHEMA IF NOT EXISTS `app` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `app` ;
+--
+-- Table structure for table `categories`
+--
 
--- -----------------------------------------------------
--- Table `app`.`users`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `app`.`users` (
-  `id` INT NULL AUTO_INCREMENT,
-  `username` VARCHAR(20) NULL,
-  `password` VARCHAR(64) NULL,
-  `salt` VARCHAR(32) NULL,
-  `name` VARCHAR(50) NULL,
-  `joined` DATETIME NULL,
-  `group` INT(11) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id_idx` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
--- -----------------------------------------------------
--- Table `app`.`group`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `app`.`group` (
-  `id` INT NULL AUTO_INCREMENT,
-  `name` VARCHAR(20) NULL,
-  `permissions` TEXT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+--
+-- Table structure for table `feeds`
+--
 
--- -----------------------------------------------------
--- Table `app`.`users_sessions`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `app`.`users_sessions` (
-  `id` INT NULL AUTO_INCREMENT,
-  `user_id` INT NULL,
-  `hash` VARCHAR(50) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+DROP TABLE IF EXISTS `feeds`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `feeds` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) DEFAULT NULL,
+  `url` varchar(2083) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- -----------------------------------------------------
--- Table `app`.`bookmarks`
--- -----------------------------------------------------
-CREATE TABLE `app`.`bookmarks` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(64) NULL,
-  `url` VARCHAR(128) NULL,
-  `created` DATETIME NULL,
-  `updated` DATETIME NULL,
-  PRIMARY KEY (`id`));
-ENGINE = InnoDB;
+--
+-- Table structure for table `cat_relations`
+--
 
--- -----------------------------------------------------
--- Table `app`.`feedss`
--- -----------------------------------------------------
-CREATE TABLE `app`.`feeds` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(64) NULL,
-  `url` VARCHAR(2083) NULL,
-  `created` DATETIME NULL,
-  `updated` DATETIME NULL,
-  PRIMARY KEY (`id`));
-ENGINE = InnoDB;
+DROP TABLE IF EXISTS `cat_relations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cat_relations` (
+  `cat_id` int(11) DEFAULT NULL,
+  `bookmark_id` int(11) DEFAULT NULL,
+  `feed_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- -----------------------------------------------------
--- Table `app`.`categories`
--- -----------------------------------------------------
-CREATE TABLE `app`.`categories` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`));
+--
+-- Table structure for table `users`
+--
 
-ALTER TABLE `app`.`categories` 
-ADD COLUMN `created` DATETIME NULL AFTER `name`,
-ADD COLUMN `updated` DATETIME NULL AFTER `created`;
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL,
+  `salt` varchar(32) CHARACTER SET latin1 DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `joined` datetime DEFAULT NULL,
+  `group` int(11) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `app`.`cat_relations` (
-  `cat_id` INT NULL,
-  `bookmark_id` INT NULL,
-  `feed_id` INT NULL);
+--
+-- Table structure for table `user_sessions`
+--
 
-ALTER TABLE `app`.`users` 
-ADD COLUMN `email` VARCHAR(255) NULL DEFAULT NULL AFTER `group`;
+DROP TABLE IF EXISTS `user_sessions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_sessions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `hash` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+--
+-- Table structure for table `groups`
+--
+
+DROP TABLE IF EXISTS `groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) DEFAULT NULL,
+  `permissions` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;

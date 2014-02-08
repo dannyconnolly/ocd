@@ -59,6 +59,7 @@ $bookmarks = $bookmark->getAll();
 </div>
 
 <div class="large-4 columns">
+
 </div>
 
 <?php include_once 'includes/layout/footer.php'; ?>

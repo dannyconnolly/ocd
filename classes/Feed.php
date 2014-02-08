@@ -55,17 +55,6 @@ class Feed {
         }
     }
 
-    public function parseFeed($url) {
-        $rss = simplexml_load_file($url);
-        return $this->_data = $rss->channel->item;
-        /*
-          foreach ($rss->channel->item as $item) {
-          return $this->_data = $item;
-          }
-         * 
-         */
-    }
-
     public function getAllByCategory($cid = null) {
         $sql = "SELECT cat_relations.feed_id, feeds.title, feeds.url "
                 . "FROM cat_relations JOIN feeds "
