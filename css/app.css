@@ -22,7 +22,8 @@ fieldset legend{
     width: 100%;
 }
 .large-12.content{
-    margin: 0 0 30px
+    margin: 0 0 30px;
+    min-height: 400px;
 }
 .page-title {
     font-family: 'Bevan', cursive;

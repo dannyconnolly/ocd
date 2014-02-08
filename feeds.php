@@ -8,7 +8,7 @@ if (!$user->isLoggedIn()) {
 include_once 'includes/layout/header.php';
 
 $feed = new Feed();
-$feeds = $feed->getAll();
+$feeds = $feed->getAll(Session::getValue(Config::get('session/session_name')));
 ?>
 
 <div class="large-8 columns">

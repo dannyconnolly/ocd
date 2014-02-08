@@ -28,8 +28,11 @@ class Feed {
         return false;
     }
 
-    public function getAll() {
-        return $this->_data = $this->_db->getAll('feeds');
+    public function getAll($user_id) {
+        $sql = "SELECT * FROM feeds WHERE user_id = ? ORDER BY title ASC";
+        if (!$this->_db->query($sql, array($user_id))->error()) {
+            return $this->_db->results();
+        }
     }
 
     public function create($fields = array()) {

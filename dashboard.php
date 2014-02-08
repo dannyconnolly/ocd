@@ -3,7 +3,7 @@ require_once 'core/init.php';
 $user = new User();
 
 $feed = new Feed();
-$feeds = $feed->getAll();
+$feeds = $feed->getAll(Session::getValue(Config::get('session/session_name')));
 
 if (!$user->isLoggedIn()) {
     Redirect::to('index.php');

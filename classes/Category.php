@@ -1,11 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Category
  *
@@ -40,8 +34,11 @@ class Category {
         return false;
     }
 
-    public function getAll() {
-        return $this->_data = $this->_db->getAll('categories');
+    public function getAll($user_id) {
+        $sql = "SELECT * FROM categories WHERE user_id = ? ORDER BY name ASC";
+        if (!$this->_db->query($sql, array($user_id))->error()) {
+            return $this->_db->results();
+        }
     }
 
     public function create($fields = array()) {

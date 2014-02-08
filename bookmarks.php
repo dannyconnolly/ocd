@@ -9,7 +9,7 @@ if (!$user->isLoggedIn()) {
 include_once 'includes/layout/header.php';
 
 $bookmark = new Bookmark();
-$bookmarks = $bookmark->getAll();
+$bookmarks = $bookmark->getAll(Session::getValue(Config::get('session/session_name')));
 ?>
 
 <div class="large-8 columns">

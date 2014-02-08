@@ -28,8 +28,11 @@ class Bookmark {
         return false;
     }
 
-    public function getAll() {
-        return $this->_data = $this->_db->getAll('bookmarks');
+    public function getAll($user_id) {
+        $sql = "SELECT * FROM bookmarks WHERE user_id = ? ORDER BY created DESC";
+        if (!$this->_db->query($sql, array($user_id))->error()) {
+            return $this->_db->results();
+        }
     }
 
     public function create($fields = array()) {
