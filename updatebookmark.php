@@ -7,7 +7,7 @@ if (!$user->isLoggedIn()) {
 }
 $bookmark = new Bookmark(Input::get('bid'));
 $category = new Category();
-$categories = $category->getAll();
+$categories = $category->getAll(Session::getValue(Config::get('session/session_name')));
 
 include_once 'includes/layout/header.php';
 

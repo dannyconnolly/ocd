@@ -59,7 +59,7 @@ class Bookmark {
     }
 
     public function getAllByCategory($cid = null) {
-        $sql = "SELECT cat_relations.bookmark_id, bookmarks.title "
+        $sql = "SELECT cat_relations.bookmark_id, bookmarks.title, bookmarks.url "
                 . "FROM cat_relations JOIN bookmarks "
                 . "ON cat_relations.bookmark_id = bookmarks.id "
                 . "WHERE cat_relations.cat_id = ?";

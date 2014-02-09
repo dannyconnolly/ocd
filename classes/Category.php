@@ -70,4 +70,20 @@ class Category {
         }
     }
 
+    public function bookmarkCount($cid) {
+        $sql = "SELECT count(cat_id) AS cat_count FROM cat_relations WHERE cat_id = ? AND bookmark_id != ''";
+        if (!$this->_db->query($sql, array($cid))->error()) {
+            $count = $this->_db->results();
+            return $count[0]->cat_count;
+        }
+    }
+
+    public function feedCount($cid) {
+        $sql = "SELECT count(cat_id) AS cat_count FROM cat_relations WHERE cat_id = ? AND feed_id != ''";
+        if (!$this->_db->query($sql, array($cid))->error()) {
+            $count = $this->_db->results();
+            return $count[0]->cat_count;
+        }
+    }
+
 }

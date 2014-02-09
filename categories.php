@@ -12,47 +12,34 @@ $categories = $category->getAll(Session::getValue(Config::get('session/session_n
 ?>
 
 <div class="large-8 columns">
-    <header class="large-8 columns page-head">
+    <ul class="breadcrumbs">
+        <li><a href="<?php echo $home = $user->isLoggedIn() ? 'dashboard' : 'index'; ?>.php">Home</a></li>
+        <li class="current"><a href="#">Categories</a></li>
+    </ul>
+    <header class="page-head">
         <h1 class="page-title">Categories</h1>
     </header>
 
-    <div class="large-4 columns">
-        <a href="addcategory.php" class="button add">Add category</a>
-    </div>
-    <div class="large-12 columns">
-        <?php if (Session::exists('category')) { ?>
-            <div data-alert class="alert-box info radius">
-                <?php echo Session::flash('category'); ?>
-                <a href="#" class="close">&times;</a>
-            </div>
-        <?php } ?>
-        <ul class="listings">        
-            <?php foreach ($categories as $category) { ?>
-                <li class="list-item row">
-                    <div class="large-9 columns">
-                        <a href="category.php?cid=<?php echo escape($category->id); ?>" title="<?php echo escape($category->name); ?>"><?php echo escape($category->name); ?></a> 
-                        <?php
-                        if (!empty($category->updated)) {
-                            ?>
-                            <small>Updated: <?php echo formatDate(escape($category->updated)); ?></small>
-                            <?php
-                        } else {
-                            ?>
-                            <small>Created: <?php echo formatDate(escape($category->created)); ?></small>
-                            <?php
-                        }
-                        ?>
-                    </div>
-
-                    <div class="large-3 columns">
-                        <ul class="actions">
-                            <li class="action"><a href="updatecategory.php?cid=<?php echo escape($category->id); ?>" title="update" class="fi-pencil update"><span>Update</span></a></li>
-                            <li class="action"><a href="deletecategory.php?cid=<?php echo escape($category->id); ?>" title="update" class="fi-trash delete" id="category-delete"><span>Delete</span></a></li>
-                        </ul>
-                    </div>
-                </li>  
+    <div class="row">
+        <div class="container large-12 columns">
+            <?php if (Session::exists('category')) { ?>
+                <div data-alert class="alert-box info radius">
+                    <?php echo Session::flash('category'); ?>
+                    <a href="#" class="close">&times;</a>
+                </div>
             <?php } ?>
-        </ul>
+            <ul class="small-block-grid-4">        
+                <?php foreach ($categories as $item) { ?>
+                    <li>
+                        <div class="category-list-box">
+                            <a href="category.php?cid=<?php echo escape($item->id); ?>" title="<?php echo escape($item->name); ?>"><?php echo escape($item->name); ?></a> 
+                            <p><?php echo $category->feedCount(escape($item->id)); ?> Feeds</p>
+                            <p><?php echo $category->bookmarkCount(escape($item->id)); ?> Bookmarks</p>
+                        </div>
+                    </li>  
+                <?php } ?>
+            </ul>
+        </div>
     </div>
 </div>
 

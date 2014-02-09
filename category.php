@@ -14,50 +14,86 @@ if (Input::get('cid')) {
 ?>
 
 <div class="large-8 columns">
-    <header class="large-8 columns page-head">
+
+    <ul class="breadcrumbs">
+        <li><a href="<?php echo $home = $user->isLoggedIn() ? 'dashboard' : 'index'; ?>.php">Home</a></li>
+        <li><a href="categories.php">Categories</a></li>
+        <li class="current"><a href="#"><?php echo $category->data()->name; ?></a></li>
+    </ul>
+
+    <header class="page-head">
         <h1 class="page-title"><?php echo $category->data()->name; ?></h1>
     </header>
 
-    <div class="large-4 columns">
-        <a href="updatecategory.php" class="button add">Edit category</a>
-    </div>
-    <div class="large-12 columns">
+    <div class="row">
+
         <?php if (Session::exists('category')) { ?>
-            <div data-alert class="alert-box info radius">
-                <?php echo Session::flash('category'); ?>
-                <a href="#" class="close">&times;</a>
+            <div class="large-12 columns">
+                <div data-alert class="alert-box info radius">
+                    <?php echo Session::flash('category'); ?>
+                    <a href="#" class="close">&times;</a>
+                </div>
             </div>
         <?php } ?>
-    </div>
-    <div class="large-12 columns">
-        <dl class="tabs" data-tab>
-            <dd class="active"><a href="#panel2-1">Feeds</a></dd>
-            <dd><a href="#panel2-2">Bookmarks</a></dd>
-        </dl>
-        <div class="tabs-content">
-            <div class="content active" id="panel2-1">
-                <!-- Feeds go here -->
-                <?php
-                $feed = new Feed();
-                $feeds = $feed->getAllByCategory(Input::get('cid'));
-                ?>
-                <ul class="listings">
-                    <?php foreach ($feeds as $item) { ?>
-                        <li class="list-item row"><a href="<?php echo escape($item->url); ?>" title="<?php echo escape($item->title); ?>" target="_blank"><?php echo escape($item->title); ?></a></li>
-                    <?php } ?>
-                </ul>
-            </div>
-            <div class="content" id="panel2-2">
-                <!-- Bookmarks go here -->
-                <?php
-                $bookmark = new Bookmark();
-                $bookmarks = $bookmark->getAllByCategory(Input::get('cid'));
-                ?>
-                <ul class="listings">
-                    <?php foreach ($bookmarks as $book) { ?>
-                        <li class="list-item row"><a href="<?php echo escape($book->url); ?>" title="<?php echo escape($book->title); ?>" target="_blank"><?php echo escape($book->title); ?></a></li>
-                    <?php } ?>
-                </ul>
+        <div class="large-12">
+            <dl class="tabs" data-tab>
+                <dd class="active"><a href="#panel2-1">Feeds</a></dd>
+                <dd><a href="#panel2-2">Bookmarks</a></dd>
+            </dl>
+            <div class="tabs-content">
+                <div class="content active" id="panel2-1">
+                    <?php
+                    $feed = new Feed();
+                    $feeds = $feed->getAllByCategory(Input::get('cid'));
+                    ?>
+                    <?php
+                    if ($feeds) {
+                        foreach ($feeds as $item) {
+                            $rss_items = simplexml_load_file($item->url);
+                            $count = 0;
+
+                            foreach ($rss_items->channel->item as $rss_item) {
+                                ?>
+                                <article class="feed-box">
+                                    <header>
+                                        <h6 class="feed-site"><img src="<?php echo get_favicon($rss_items->channel->link) ?>" width="16" height="16"/><a href=""><?php echo escape($item->title); ?></a></h6>
+                                        <small class="feed-date"><?php echo date('jS F Y, g:i a', strtotime($rss_item->pubDate)); ?></small>
+                                    </header>
+                                    <h4 class="feed-title"><a href="<?php echo $rss_item->link ?>" title="<?php echo $rss_item->title ?>" class="feed-link" target="_blank"><?php echo $rss_item->title ?></a></h4>
+                                    <p><?php echo substr(strip_tags($rss_item->description), 0, 260); ?></p>
+                                </article>
+                                <?php
+                                $count++;
+                            }
+                        }
+                    } else {
+                        ?>
+                        <p>No feeds for this category</p>
+                        <?php
+                    }
+                    ?>
+                </div>
+                <div class="content" id="panel2-2">
+                    <!-- Bookmarks go here -->
+                    <?php
+                    $bookmark = new Bookmark();
+                    $bookmarks = $bookmark->getAllByCategory(Input::get('cid'));
+                    if ($bookmarks) {
+                        foreach ($bookmarks as $book) {
+                            ?>
+                            <article class="bookmark-box">
+                                <h4>
+                                    <a href="<?php echo escape($book->url); ?>" title="<?php echo escape($book->title); ?>" target="_blank"><img src="<?php echo get_favicon(escape($book->url)) ?>" width="16" height="16"/><?php echo escape($book->title); ?></a>
+                                </h4>
+                            </article>
+                            <?php
+                        }
+                    } else {
+                        ?>
+                        <p>No bookmarks for this category</p>
+                    <?php }
+                    ?>
+                </div>
             </div>
         </div>
     </div>

@@ -44,11 +44,17 @@
                 <!-- Left Nav Section -->
                 <ul class="left">
                     <li><a href="<?php echo $home = $user->isLoggedIn() ? 'dashboard' : 'index'; ?>.php">Home</a></li>
+                    <?php if ($user->isLoggedIn()) { ?>
+                        <li><a href="categories.php">Categories</a></li>
+                        <li><a href="bookmarks.php">Bookmarks</a></li>
+                        <li><a href="feeds.php">Feeds</a></li>
+                    <?php } ?>
                 </ul>
             </section>
         </nav>
-        <?php include_once 'includes/layout/sidebar.php'; ?>
-
-        <div class="large-12 columns content">
-
-            <hr />
+        <?php
+        if ($user->isLoggedIn()) {
+            include_once 'includes/layout/sidebar.php';
+        }
+        ?>
+        <div class="large-10 columns content" data-equalizer-watch>

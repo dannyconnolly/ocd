@@ -1,0 +1,28 @@
+@mixin format_ul{
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+@mixin padding_custom{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+@mixin half_column{
+    width: 50%;
+    float: left;
+}
+@mixin item_box{
+    border: 1px solid #cacaca;
+    width: 100%;
+    padding: 10px;
+}
+@mixin item_title{
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 700;
+}
+@mixin favicon{
+    display: inline-block;
+    margin-right: 5px;
+    margin-top: -2px;
+}

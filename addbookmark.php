@@ -8,7 +8,7 @@ if (!$user->isLoggedIn()) {
 
 include_once 'includes/layout/header.php';
 $category = new Category();
-$categories = $category->getAll();
+$categories = $category->getAll(Session::getValue(Config::get('session/session_name')));
 
 if (Input::exists()) {
     if (Token::check(Input::get('token'))) {

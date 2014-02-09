@@ -7,7 +7,7 @@ if (Session::exists('home')) {
 }
 ?>
 <div class="large-8 columns">
-    <h1>Vault</h1>
+    <h1>Online Content Dashboard</h1>
 </div>
 <div class = "large-4 columns">
 </div>

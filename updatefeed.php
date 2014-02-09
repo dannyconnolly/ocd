@@ -7,7 +7,7 @@ if (!$user->isLoggedIn()) {
 }
 $feed = new Feed(Input::get('fid'));
 $category = new Category();
-$categories = $category->getAll();
+$categories = $category->getAll(Session::getValue(Config::get('session/session_name')));
 include_once 'includes/layout/header.php';
 
 if (Input::exists()) {

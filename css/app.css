@@ -1,220 +1,262 @@
-/*
-font-family: 'Montserrat Alternates', sans-serif;
-font-family: 'Bevan', cursive;
-*/
-html, body{
-    height: 100%;
-}
-body{
-    background: #eff0f2;
-    font-family: 'Montserrat Alternates', sans-serif;
-    font-family: Arial, sans-serif;
-}
-fieldset legend{
-    background: transparent;
-}
-.top-bar .name h1 a {
-    text-transform: uppercase;
-    font-family: 'Bevan', cursive;
-    font-family: Impact, sans-serif;
-}
-.button.add{
-    width: 100%;
-}
-.large-12.content{
-    margin: 0 0 30px;
-    min-height: 400px;
-}
-.page-title {
-    font-family: 'Bevan', cursive;
-    font-family: Impact, sans-serif;
-    color: #353535;
-    text-shadow: 1px 1px #fff;
-    line-height: 30px;
-}
-.listings, .actions, .sidebar-nav{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-.listings {
-    width: 100%;
-    background: #fff;
-}
-.list-item{
-    margin:  0;
-    line-height: 40px;
-    font-size: 18px;
-    border-bottom: 1px solid #eee;
-}
-.list-item.row {
-    margin:  0;
-}
-.list-item a{
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\000032}}
+html, body {
+  height: 100%;
+  font-family: Tahoma, Geneva, sans-serif;
+  background: #eff0f2; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\000037}}
+.sidebar {
+  background: #dddddd;
+  height: 100%;
+  padding: 15px 0 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000311}}
+  .sidebar .add {
+    color: #008cba;
+    border-bottom: 1px solid #cbcbcb;
     display: block;
-    color: #353535;
-}
-.actions{
-    overflow: hidden;
-}
-.action{
+    font-size: 16px;
+    line-height: 30px;
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 15px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000319}}
+    .sidebar .add:hover {
+      color: #025874; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000322}}
+    .sidebar .add span {
+      padding-right: 5px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000326}}
+  .sidebar .add:first-child {
+    border-top: 1px solid #cbcbcb; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000329}}
+  .sidebar .sidebar-nav {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 15px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000332}}
+    .sidebar .sidebar-nav li {
+      display: block; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000334}}
+      .sidebar .sidebar-nav li.active, .sidebar .sidebar-nav li:hover {
+        background: #adacac; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000336}}
+        .sidebar .sidebar-nav li.active a, .sidebar .sidebar-nav li:hover a {
+          color: #fff; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000340}}
+      .sidebar .sidebar-nav li a {
+        color: #353535;
+        padding-left: 15px;
+        padding-right: 15px;
+        line-height: 30px;
+        font-size: 14px;
+        display: block; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000350}}
+.content {
+  padding-top: 15px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000352}}
+  .content .page-head {
+    padding: 0;
+    margin: 0 0 1.5rem 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000355}}
+    .content .page-head .page-title {
+      font-size: 30px;
+      line-height: 30px;
+      font-weight: 700;
+      margin: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000362}}
+  .content .actions {
+    padding-right: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000364}}
+    .content .actions .button {
+      float: right;
+      padding-top: 5px;
+      padding-bottom: 5px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000371}}
+.container {
+  background: #fff;
+  margin: 0 0 1.5rem 0; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000375}}
+.tabs dd {
+  border-top: 1px solid #cacaca;
+  border-left: 1px solid #cacaca;
+  border-right: 1px solid #cacaca;
+  border-bottom: 1px solid #cacaca; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000380}}
+  .tabs dd.active {
+    border-bottom: 1px solid #fff; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000382}}
+    .tabs dd.active > a {
+      color: #000;
+      font-weight: 700; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000387}}
+  .tabs dd > a {
+    font-size: 18px;
+    text-align: left;
+    color: #605f5f;
+    padding: 8px 64px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000394}}
+.tabs-content {
+  background: #fff;
+  border: 1px solid #cacaca; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\0000397}}
+  .tabs-content .content {
+    padding: 20px;
+    width: 100%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003102}}
+.feed-box {
+  border: 1px solid #cacaca;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003107}}
+  .feed-box header h6.feed-site {
+    font-size: 12px;
+    font-weight: 700;
     width: 50%;
     float: left;
-}
-.action a {
-    font-size: 18px;
-    line-height: 40px;
-}   
-.action a span{
-    display: none;
-}
-.fi-pencil.update {
-    color: #353535
-}
-.fi-trash.delete{
-    color: #353535;
-}
-.sidebar{
-    background: #00A99E;
-    height: 80px;
-    padding: 10px 0;
-}
-.sidebar-nav.row{
-    margin: 0 auto;
-}
-.sidebar-nav li {
-    text-align: center;
-}
-.sidebar-nav li a{
-    color: #000;
-    display: block;
+    line-height: 25px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003112}}
+    .feed-box header h6.feed-site img {
+      display: inline-block;
+      margin-right: 5px;
+      margin-top: -2px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003115}}
+    .feed-box header h6.feed-site a {
+      color: #bcbcbc; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003119}}
+  .feed-box header small {
+    width: 50%;
+    float: left;
+    color: #bcbcbc;
     font-size: 12px;
-    font-weight: 700;
-    line-height: 14px;
-}
-.sidebar-nav li a:hover{
-
-}
-.sidebar-nav li span {
-    font-size: 40px;
-    line-height: 40px;
     display: block;
-}
-.sidebar-nav li a {
-    color: #000;
+    text-align: right;
+    line-height: 25px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003128}}
+  .feed-box h4.feed-title {
+    font-size: 18px;
+    line-height: 25px;
     font-weight: 700;
-    font-size: 13px;
-}
-
-.accordion dd > a{
-    background: #fff;
-    color: #353535;
-    font-size: 18px;
-    border-bottom: 1px solid #eee;
-}
-
-.category-list{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-.category-list li{
-    width: 33%;
-    float:left;
-}
-
-.dw-box{
-    background: #fff;
-    margin: 0 0 15px 0;
-}
-.dw-header{
-    background: #353535;
-}
-.dw-header h1, .dw-header h3 {
-    color: #fff;
-    font-family: 'Bevan', cursive;
-    font-family: Impact, sans-serif;
-    margin: 0;
-    line-height: 50px;
-    font-size: 20px;
-    padding: 0 15px;
-}
-.dw-header h1 span, .dw-header h3 span{
-    display: inline-block;
-    margin-right: 10px;
-}
-.dw-profile{
-    padding: 20px 0;
-}
-.dw-profile-text.columns{
-    padding-left: 0;
-}
-.dw-profile-text p{
-    margin: 0;
-}
-.dw-list{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.dw-list-item{
-    border-bottom: 1px solid #eee;
-}
-.dw-list-item a, .dw-list-item a:visited {
-    color: #353535;
-    font-size: 18px;
-    padding: 15px 35px 10px 15px;
+    clear: both; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003131}}
+    .feed-box h4.feed-title a {
+      color: #000; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003135}}
+  .feed-box p {
+    font-size: 16px;
     line-height: 22px;
-    display: block;
-}
-.dw-list-item:hover {
-    background: #E3E3E3;
-}
-.dw-list-item:hover a{
-    color: #000;
-}
-.feed-box{
-    border: 1px solid #eee;
-    min-height: 200px;
-    padding: 10px;
-}
-.feed-title{
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: 700;
-}
-.feed-link{
-    color: #000;
-}
-.container{
-    background: #fff;
-    padding: 20px;
-}
-.container .feed-list{
-    margin:0;
-    padding: 0;
-    list-style: none;
-}
-.container .feed-box{
-    min-height: 0
-}
-.container .feed-title{
+    color: #5d5656; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003141}}
+.bookmark-box {
+  border: 1px solid #cacaca;
+  width: 100%;
+  padding: 10px;
+  margin: -1px 0 0 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003144}}
+  .bookmark-box h4 {
     font-size: 18px;
-    line-height: 18px;
+    line-height: 25px;
     font-weight: 700;
-}
-.container .feed-site{
+    margin: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003147}}
+    .bookmark-box h4 a {
+      color: #000;
+      display: block; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003150}}
+      .bookmark-box h4 a img {
+        display: inline-block;
+        margin-right: 5px;
+        margin-top: -2px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003156}}
+.dw-box {
+  background: #fff;
+  margin-bottom: 1.5rem; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003159}}
+  .dw-box .dw-header {
+    padding: 5px 10px;
+    background: #333333; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003162}}
+    .dw-box .dw-header h3 {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003167}}
+      .dw-box .dw-header h3 span {
+        margin-right: 5px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003173}}
+.dw-profile {
+  padding: 15px 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003175}}
+  .dw-profile .dw-gravatar {
+    padding-right: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003178}}
+  .dw-profile .dw-profile-text {
+    padding-left: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003181}}
+  .dw-profile h4 {
+    margin: 0;
+    font-size: 24px;
+    line-height: 30px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003186}}
+  .dw-profile p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 22px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003191}}
+  .dw-profile small, .dw-profile a {
     font-size: 12px;
-    line-height: 18px;
-    font-weight: 700;
-    color: #999;
-}
-footer{
-    padding: 20px 0;
-    text-align: center;
-    color: #fff;
-    background: #333333;
-    clear: both;
-    margin: 30px 0 0;
-}
+    display: block;
+    line-height: 16px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003197}}
+.dw-list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003199}}
+  .dw-list li {
+    border-bottom: 1px solid #cacaca; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003201}}
+    .dw-list li a {
+      display: block;
+      color: #000;
+      font-size: 18px;
+      line-height: 26px;
+      padding: 0.5rem 0.9375rem; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003207}}
+      .dw-list li a:hover {
+        background: #adacac; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003212}}
+  .dw-list li:last-child {
+    border-bottom: none; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003216}}
+.category-list-box {
+  margin-top: 1rem; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003218}}
+  .category-list-box a {
+    font-size: 16px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003221}}
+  .category-list-box p {
+    border-bottom: 1px dotted #cacaca;
+    margin: 0;
+    font-size: 14px;
+    line-height: 22px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Apache2\.2\/htdocs\/ocd\/css\/scss\/app\.scss}line{font-family:\00003228}}
+footer {
+  background: #333333;
+  clear: both;
+  height: 100px;
+  text-align: center;
+  color: #fff; }

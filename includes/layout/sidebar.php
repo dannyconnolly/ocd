@@ -1,27 +1,20 @@
-<div class="large-12 columns sidebar">
+<?php
+$category = new Category();
+$categories = $category->getAll(Session::getValue(Config::get('session/session_name')));
+?> 
 
-    <?php
-    if ($user->isLoggedIn()) {
-        ?>   
-        <ul class="sidebar-nav row">
-            <li class="large-3 columns">
-                <a href="categories.php" title="Categories"><span class="fi-folder"></span>Categories</a>
-            </li>
-            <li class="large-3 columns">
-                <a href="feeds.php" title="Bookmarks"><span class="fi-rss"></span>Feeds</a>
-            </li>
-            <li class="large-3 columns">
-                <a href="bookmarks.php" title="Bookmarks"><span class="fi-bookmark"></span>Bookmarks</a>
-            </li>
-            <li class="large-3 columns">
-                <a href="profile.php?user=<?php echo escape($user->data()->username); ?>" title="Bookmarks"><span class="fi-torso"></span>Profile</a>
+
+<div class="large-2 columns sidebar" data-equalizer-watch>
+    <a href="addcategory.php" class="add"><span class="fi-plus"></span>Add Category</a>
+    <a href="addbookmark.php" class="add"><span class="fi-plus"></span>Add Bookmark</a>
+    <a href="addfeed.php" class="add"><span class="fi-plus"></span>Add Feed</a>
+    <ul class="sidebar-nav">
+        <?php foreach ($categories as $category) { ?>
+            <li class="list-item<?php echo $class = Input::get('cid') == escape($category->id) ? ' active' : ''; ?>">
+                <a href="category.php?cid=<?php echo escape($category->id); ?>" title="<?php echo escape($category->name); ?>"><?php echo escape($category->name); ?></a>
             </li>  
-        </ul>  
-        <?php
-    } else {
-        
-    }
-    ?>
+        <?php } ?>
+    </ul>
 </div>
 
 
