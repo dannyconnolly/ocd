@@ -76,4 +76,63 @@ class Feed {
         }
     }
 
+    public function saveFeedItems($user_id) {
+        $sql = "SELECT feeds.id, feeds.url, cat_relations.cat_id "
+                . "FROM feeds JOIN cat_relations "
+                . "ON cat_relations.feed_id = feeds.id ";
+
+        if (!$this->_db->query($sql, array($user_id))->error()) {
+            $feeds = $this->_db->results();
+
+            foreach ($feeds as $feed) {
+                libxml_use_internal_errors(true);
+                $rss_items = simplexml_load_file($feed->url);
+
+                if (!$rss_items) {
+                    echo 'Failed to load feed!<br />';
+                    foreach (libxml_get_errors() as $error) {
+                        echo $error->message . '<br />';
+                    }
+                }
+
+                foreach ($rss_items->channel->item as $item) {
+
+                    $fields = array(
+                        'content' => $item->description,
+                        'title' => $item->title,
+                        'link' => $item->link,
+                        'pub_date' => date("Y-m-j G:i:s", strtotime($item->pubDate)),
+                        'status' => 0,
+                        'cat_id' => $feed->cat_id
+                    );
+
+                    $link = $item->link;
+                    $item_exists_sql = "SELECT link FROM items WHERE link = ?";
+                    $item_exists = $this->_db->query($item_exists_sql, array($link))->count();
+
+                    if ($item_exists < 1) {
+                        echo 'adding ' . $fields['title'] . ' to db<br />';
+                        $insert_sql = "INSERT INTO items (content, title, link, pub_date, status, cat_id ) VALUES (?, ?, ?, ?, ?, ? )";
+
+                        if (!$this->_db->query($insert_sql, $fields)->error()) {
+                            echo $fields['title'] . ' added to db<br />';
+                            return $this->_db->results();
+                        } else {
+                            echo $fields['title'] . ' couldn\'t be added<br />';
+                        }
+                    } else {
+                        echo $fields['title'] . ' not adding to db<br />';
+                    }
+                }
+            }
+        }
+    }
+
+    public function feedStream($cat_id) {
+        $sql = "SELECT * FROM items WHERE cat_id = ? ORDER BY pub_date DESC";
+        if (!$this->_db->query($sql, array($cat_id))->error()) {
+            return $this->_db->results();
+        }
+    }
+
 }

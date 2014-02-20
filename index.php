@@ -6,9 +6,7 @@ if (Session::exists('home')) {
     echo Session::flash('home');
 }
 ?>
-<div class="large-8 columns">
+<div class="large-8 columns large-centered home-box">
     <h1>Online Content Dashboard</h1>
-</div>
-<div class = "large-4 columns">
 </div>
 <?php include_once 'includes/layout/footer.php'; ?>

@@ -4,6 +4,9 @@ html, body{
     font-family: Tahoma, Geneva, sans-serif;
     background: #eff0f2;
 }
+.home-box{
+    min-height: 500px;
+}
 .sidebar{
     background: #dddddd;
     height:100%;
@@ -49,6 +52,8 @@ html, body{
 }
 .content{
     padding-top: 15px;
+    /*background: url(../img/199553.png) center center fixed no-repeat transparent;
+    background-size: cover;*/
     .page-head{
         padding:0;
         margin: 0 0 1.5rem 0;
@@ -69,7 +74,7 @@ html, body{
     }
 }
 .container{
-    background: #fff;
+    background: rgba(255,255,255,0.9);
     margin: 0 0 1.5rem 0;
 }
 .tabs dd{
@@ -154,11 +159,11 @@ html, body{
     }
 }
 .dw-box{
-    background: #fff;
+    background: rgba(255,255,255,0.9);
     margin-bottom: 1.5rem;
     .dw-header{
         padding: 5px 10px;
-        background: #333333;
+        background: rgba(0,0,0,0.8);
         h3{
             color: #fff;
             font-size: 18px;

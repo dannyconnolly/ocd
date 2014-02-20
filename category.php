@@ -44,27 +44,21 @@ if (Input::get('cid')) {
                 <div class="content active" id="panel2-1">
                     <?php
                     $feed = new Feed();
-                    $feeds = $feed->getAllByCategory(Input::get('cid'));
+                    $feeds = $feed->feedStream(Input::get('cid'));
                     ?>
                     <?php
                     if ($feeds) {
                         foreach ($feeds as $item) {
-                            $rss_items = simplexml_load_file($item->url);
-                            $count = 0;
-
-                            foreach ($rss_items->channel->item as $rss_item) {
-                                ?>
-                                <article class="feed-box">
-                                    <header>
-                                        <h6 class="feed-site"><img src="<?php echo get_favicon($rss_items->channel->link) ?>" width="16" height="16"/><a href=""><?php echo escape($item->title); ?></a></h6>
-                                        <small class="feed-date"><?php echo date('jS F Y, g:i a', strtotime($rss_item->pubDate)); ?></small>
-                                    </header>
-                                    <h4 class="feed-title"><a href="<?php echo $rss_item->link ?>" title="<?php echo $rss_item->title ?>" class="feed-link" target="_blank"><?php echo $rss_item->title ?></a></h4>
-                                    <p><?php echo substr(strip_tags($rss_item->description), 0, 260); ?></p>
-                                </article>
-                                <?php
-                                $count++;
-                            }
+                            ?>
+                            <article class="feed-box">
+                                <header>
+                                    <h6 class="feed-site"><img src="<?php echo get_favicon($item->link) ?>" width="16" height="16"/><a href=""><?php echo escape($item->title); ?></a></h6>
+                                    <small class="feed-date"><?php echo date('jS F Y, g:i a', strtotime($item->pub_date)); ?></small>
+                                </header>
+                                <h4 class="feed-title"><a href="<?php echo $item->link ?>" title="<?php echo $item->title ?>" class="feed-link" target="_blank"><?php echo $item->title ?></a></h4>
+                                <p><?php echo substr(strip_tags($item->content), 0, 260); ?></p>
+                            </article>
+                            <?php
                         }
                     } else {
                         ?>

@@ -30,6 +30,8 @@ include_once 'includes/layout/header.php';
     <div class="row">
         <div class="container large-12 columns">
             <?php
+            $feed->saveFeedItems(Session::getValue(Config::get('session/session_name')));
+
             foreach ($feeds as $item) {
                 $rss_items = simplexml_load_file($item->url);
                 $count = 0;
