@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="css/foundation.css" />
         <link rel="stylesheet" href="css/foundation-icons/foundation-icons.css" />
         <link rel="stylesheet" href="css/app.css" />
-        <script src="js/modernizr.js"></script>
+        <script src="bower_components/modernizr/modernizr.js"></script>
     </head>
     <body>
 
