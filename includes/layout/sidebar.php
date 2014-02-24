@@ -5,9 +5,9 @@ $categories = $category->getAll(Session::getValue(Config::get('session/session_n
 
 
 <div class="large-2 columns sidebar" data-equalizer-watch>
-    <a href="addcategory.php" class="add"><span class="fi-plus"></span>Add Category</a>
-    <a href="addbookmark.php" class="add"><span class="fi-plus"></span>Add Bookmark</a>
-    <a href="addfeed.php" class="add"><span class="fi-plus"></span>Add Feed</a>
+    <a href="addcategory.php" class="add" id="add-category"><span class="fi-plus"></span>Add Category</a>
+    <a href="addbookmark.php" class="add" id="add-bookmark"><span class="fi-plus"></span>Add Bookmark</a>
+    <a href="addfeed.php" class="add" id="add-feed"><span class="fi-plus"></span>Add Feed</a>
     <ul class="sidebar-nav">
         <?php foreach ($categories as $category) { ?>
             <li class="list-item<?php echo $class = Input::get('cid') == escape($category->id) ? ' active' : ''; ?>">

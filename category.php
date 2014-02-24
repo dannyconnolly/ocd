@@ -52,7 +52,7 @@ if (Input::get('cid')) {
                             ?>
                             <article class="feed-box">
                                 <header>
-                                    <h6 class="feed-site"><img src="<?php echo get_favicon($item->link) ?>" width="16" height="16"/><a href=""><?php echo escape($item->title); ?></a></h6>
+                                    <h6 class="feed-site"><img src="<?php echo get_favicon($item->link) ?>" width="16" height="16"/><a href=""><?php echo escape($item->name); ?></a></h6>
                                     <small class="feed-date"><?php echo date('jS F Y, g:i a', strtotime($item->pub_date)); ?></small>
                                 </header>
                                 <h4 class="feed-title"><a href="<?php echo $item->link ?>" title="<?php echo $item->title ?>" class="feed-link" target="_blank"><?php echo $item->title ?></a></h4>
