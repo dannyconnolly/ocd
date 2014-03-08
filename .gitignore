@@ -221,3 +221,4 @@ pip-log.txt
 /css/*
 /bower_components/*
 /node_modules/*
+/nbproject/*

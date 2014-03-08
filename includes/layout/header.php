@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>CRM</title>
         <link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700|Bevan' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/foundation.css" />
         <link rel="stylesheet" href="css/foundation-icons/foundation-icons.css" />
         <link rel="stylesheet" href="css/app.css" />
         <script src="bower_components/modernizr/modernizr.js"></script>
