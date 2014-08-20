@@ -18,10 +18,11 @@ if (Input::exists()) {
             $login = $user->login(Input::get('username'), Input::get('password'), $remember);
 
             if ($login) {
+                Session::flash('dashboard', 'Successfully logged in.');
                 Redirect::to('dashboard.php');
             } else {
-                Redirect::to('login.php');
                 Session::flash('login', 'There was a problem logging in.');
+                Redirect::to('login.php');
             }
         } else {
             foreach ($validate->errors() as $error) {

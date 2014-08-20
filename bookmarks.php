@@ -20,14 +20,14 @@ $bookmarks = $bookmark->getAll(Session::getValue(Config::get('session/session_na
     <div class="large-4 columns">
         <a href="addbookmark.php" class="button add">Add bookmark</a>
     </div>
-    <div class="large-12 columns">
+    <div class="container large-12 columns">
         <?php if (Session::exists('bookmark')) { ?>
             <div data-alert class="alert-box info radius">
                 <?php echo Session::flash('bookmark'); ?>
                 <a href="#" class="close">&times;</a>
             </div>
         <?php } ?>
-        <ul class="listings">            
+        <ul class="book-listings">            
             <?php foreach ($bookmarks as $bookmark) { ?>
                 <li class="list-item row">
                     <div class="large-9 columns">
@@ -47,8 +47,8 @@ $bookmarks = $bookmark->getAll(Session::getValue(Config::get('session/session_na
                     </div>
                     <div class="large-3 columns">
                         <ul class="actions">
-                            <li class="action"><a href="updatebookmark.php?bid=<?php echo escape($bookmark->id); ?>" title="update" class="fi-pencil update"><span>Update</span></a></li>
-                            <li class="action"><a href="deletebookmark.php?bid=<?php echo escape($bookmark->id); ?>" title="delete" class="fi-trash delete"><span>Delete</span></a></li>
+                            <li class="action"><a href="updatebookmark.php?bid=<?php echo escape($bookmark->id); ?>" title="update" class="fi-pencil update"></a></li>
+                            <li class="action"><a href="deletebookmark.php?bid=<?php echo escape($bookmark->id); ?>" title="delete" class="fi-trash delete"></a></li>
                         </ul>
                     </div>
                 </li>  

@@ -12,7 +12,7 @@
             <li class="dw-list-item">
                 <a href="<?php echo escape($book->url); ?>" title="<?php echo escape($book->title); ?>" target="_blank">
                     <img src="<?php echo get_favicon(escape($book->url)); ?>" width="16" height="16"/>
-                    <?php echo escape($book->title); ?>
+                    <span><?php echo escape($book->title); ?></span>
                 </a>
             </li>
         <?php } ?>

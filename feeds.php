@@ -19,7 +19,7 @@ $feeds = $feed->getAll(Session::getValue(Config::get('session/session_name')));
     <div class="large-4 columns">
         <a href="addfeed.php" class="button add">Add feed</a>
     </div>
-    <div class="large-12 columns">
+    <div class="container large-12 columns">
         <?php if (Session::exists('feed')) { ?>
             <div data-alert class="alert-box info radius">
                 <?php echo Session::flash('feed'); ?>

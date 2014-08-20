@@ -40,6 +40,7 @@
 //   "foundation/components/offcanvas",
 //   "foundation/components/visibility";
 
+
 html, body{
     height: 100%;
     font-family: Tahoma, Geneva, sans-serif;
@@ -117,6 +118,8 @@ html, body{
 .container{
     background: rgba(255,255,255,0.9);
     margin: 0 0 1.5rem 0;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 .tabs dd{
     border-top: 1px solid #cacaca;
@@ -196,6 +199,7 @@ html, body{
             img{
                 @include favicon;
             }
+
         }
     }
 }
@@ -248,16 +252,58 @@ html, body{
             display: block;
             color: #000;
             font-size: 18px;
-            line-height: 26px;
+            line-height: 20px;
             padding: 0.5rem 0.9375rem;
             &:hover{
-                background: #adacac;
+                background: lighten(#adacac, 20%);
             }
+			img{
+				float: left;
+				margin: 3px 5px 0 0;
+			}
+			span{
+				margin-left: 20px;
+				display: block;
+			}
         }
     }
     li:last-child{
         border-bottom: none;
     }
+}
+.book-listings{
+	@include format_ul;
+    > li{
+        border-bottom: 1px solid #cacaca;
+        a{
+            display: block;
+            color: #000;
+            font-size: 18px;
+            line-height: 20px;
+            padding: 0.5rem 0.9375rem;
+			img{
+				float: left;
+				margin: 3px 5px 0 0;
+			}
+			span{
+				margin-left: 20px;
+				display: block;
+			}
+        }
+		&:hover{
+			background: lighten(#adacac, 20%);
+		}
+    }
+    > li:last-child{
+        border-bottom: none;
+    }
+}
+.actions{
+	@include format_ul;
+	li{
+		display: inline-block;
+		padding: 0 10px;
+	}
 }
 .category-list-box{
     margin-top: 1rem;
@@ -270,6 +316,10 @@ html, body{
         font-size: 14px;
         line-height: 22px;
     }
+}
+.category-list{
+    list-style: none;
+    margin: 0;
 }
 footer{
     background: #333333;

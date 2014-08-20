@@ -3,7 +3,7 @@
 class Validate {
 
     private $_passed = false;
-    private $errors = array();
+    public $errors = array();
     private $_db = null;
 
     public function __construct() {

@@ -215,10 +215,7 @@ pip-log.txt
 .mr.developer.cfg
 
 # netbeans folder
-/nbproject/*
+nbproject/*
 
 *.DS_Store
-/css/*
-/bower_components/*
-/node_modules/*
-/nbproject/*
+node_modules/*
