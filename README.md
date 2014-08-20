@@ -1,7 +1,8 @@
 # OCD
-===
 
 PHP Application for keeping bookmarks and rss feeds.
+
+** This is not a real world application
 
 ## Getting Started
 1. Create a new mysql database.
